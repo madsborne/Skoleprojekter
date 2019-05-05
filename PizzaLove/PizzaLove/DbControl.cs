@@ -21,55 +21,13 @@ namespace PizzaLove
             }
         }
 
+        List<Pizza> newPizza = new List<Pizza>();
+
         public DbControl()
         {
 
         }
-
-
-        /// <summary>
-        /// Inserts the user input into local vars that are used later in the method
-        /// </summary>
-        /// <param name="userFirstName"></param>
-        /// <param name="userLastName"></param> 
-        /// <param name="userPhoneNumber"></param>
-        /// <param name="userAdress"></param>
-        /// <param name="userPostNumber"></param>
-        public void InsertIntoDb(string userFirstName, string userLastName, string userPhoneNumber, string userAdress, string userPostNumber)
-        {
-            // local vars
-            string firstName = userFirstName;
-            string lastName = userLastName;
-            Int32.TryParse(userPhoneNumber, out int phoneNumber);
-            string adress = userAdress;
-            string postNumber = userPostNumber;
-
-            // creates the connection 
-            SqlConnection connection = new SqlConnection(DbConString);
-            // adds the local vars into query
-            string queryAddCustomer = $"INSERT INTO Kunde(Fornavn,Efternavn,Telefon_nr,Adresse,Postnr) VALUES('{firstName}', '{lastName}', '{phoneNumber}', '{adress}', '{postNumber}')";
-
-            SqlCommand cmd = new SqlCommand(queryAddCustomer, connection);
-
-            try
-            {
-                connection.Open();
-                cmd.ExecuteNonQuery();
-                Console.WriteLine("Done");
-                Console.ReadKey();
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine(e.Message);
-                Console.ReadKey();
-            }
-            finally
-            {
-                connection.Close();
-                Console.WriteLine("Closed");
-                Console.ReadKey();
-            }
-        }
+        
 
         public void DisplayAllPizza()
         {
@@ -83,14 +41,11 @@ namespace PizzaLove
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable dataTable = reader.GetSchemaTable();
 
-                while (reader.Read())
-                {
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        Console.WriteLine(reader.GetValue(i));
-                    }
+                int name = dataTable.Rows[2].Field<int>(0);
 
-                }
+                Console.WriteLine(name);
+
+                
 
 
             }

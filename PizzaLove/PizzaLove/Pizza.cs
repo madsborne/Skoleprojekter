@@ -10,7 +10,6 @@ namespace PizzaLove
 {
     class Pizza
     {
-        
 
         private int pizzaId;
         private int price;
@@ -77,7 +76,14 @@ namespace PizzaLove
         }
         #endregion
 
-        
+        public Pizza(int dbPizzaId)
+        {
+            PizzaId = dbPizzaId;
+            //Price = dbPrice;
+            //PizzaName = dbPizzaName;
+            //Size = dbSize;
+            //PizzaContent = dbPizzaContent;
+        }
 
     }
 }

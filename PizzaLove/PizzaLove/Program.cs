@@ -23,25 +23,7 @@ namespace PizzaLove
 
                 switch (userInput)
                 {
-                    case "1":
-                        Console.WriteLine("Type in your name");
-                        string userName = Console.ReadLine();
-
-                        Console.WriteLine("Type in your last name");
-                        string userLastName = Console.ReadLine();
-
-                        Console.WriteLine("Type in your phone number");
-                        string userPhoneNumber = Console.ReadLine();
-
-                        Console.WriteLine("Type in your adress");
-                        string userAdress = Console.ReadLine();
-
-                        Console.WriteLine("Type in your zip number");
-                        string userZipNumber = Console.ReadLine();
-
-                        db.InsertIntoDb(userName, userLastName, userPhoneNumber, userAdress, userZipNumber);
-                        break;
-
+                    
                     case "2":
                         db.DisplayAllDriknk();
                         break;
